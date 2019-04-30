@@ -1,0 +1,106 @@
+\documentclass[a4paper,8pt]{report}
+
+% Configuracao do Latex
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[hmargin=0.5cm, vmargin=0.5cm, a4paper]{geometry}
+\usepackage[noae]{Sweave}
+\usepackage[usenames,dvipsnames,table]{xcolor}
+\usepackage{graphicx,epsfig}
+%\usepackage{fancyhdr}
+
+%\pagestyle{fancy}
+%\fancyfoot{}
+%\fancyfoot[L]{Quelle: http://www.oanda.de}
+%\fancyfoot[C]{\today}
+
+
+\definecolor{lightgray}{gray}{0.95}
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{white}{lightgray}\oldtabular}{\endoldtabular}
+
+\graphicspath{ {../img/} }
+
+\begin{document}
+
+\SweaveOpts{concordance=TRUE,keep.source=TRUE}
+
+  \textbf{Quelle:} \texttt{http://www.oanda.de}   \hspace{2in}{Zuletzt aktualisiert am \today}
+  \vspace{0.3cm}
+
+<<echo=false>>=
+ options( OutDec = "," )
+ Projeto.path <- '../'
+ source(paste( Projeto.path, 'scripts/R/cambio.R', sep="") )
+@
+
+\centering
+
+ \begin{tabular}
+ {llllrr}
+ \hline
+    & Land                         & Währungsname            & ISO & EUR 1,00                 & USD 1,00                \\
+ \hline
+
+ \includegraphics[width=16px]{ANG}
+    & Niederländische Antillen     & Antilliaanse Gulden     & ANG & \Sexpr{atual("EUR/ANG")} & \Sexpr{atual("USD/ANG")}\\
+
+ \includegraphics[width=16px]{ARS}
+    & Argentinien                  & Peso Argentino          & ARS & \Sexpr{atual("EUR/ARS")} & \Sexpr{atual("USD/ARS")}\\
+
+ \includegraphics[width=16px]{BOB}
+    & Bolivien                     & Boliviano               & BOB & \Sexpr{atual("EUR/BOB")} & \Sexpr{atual("USD/BOB")}\\
+
+ \includegraphics[width=16px]{BRL}
+    & Brasilien                    & Real                    & BRL & \Sexpr{atual("EUR/BRL")} & \Sexpr{atual("USD/BRL")}\\
+
+ \includegraphics[width=16px]{CLP}
+    & Chile                        & Peso Chileno            & CLP & \Sexpr{atual("EUR/CLP")} & \Sexpr{atual("USD/CLP")}\\
+
+ \includegraphics[width=16px]{COP}
+    & Kolumbien                    & Peso Colombiano         & COP & \Sexpr{atual("EUR/COP")} & \Sexpr{atual("USD/COP")}\\
+
+ \includegraphics[width=16px]{USD(Ecuador)}
+    & Ecuador                      & United States Dollar    & USD & \Sexpr{atual("EUR/USD")} & \Sexpr{atual("USD/USD")}\\
+
+ \includegraphics[width=16px]{GTQ}
+    & Guatemala                    & Quetzal                 & GTQ & \Sexpr{atual("EUR/GTQ")} & \Sexpr{atual("USD/GTQ")}\\
+
+ \includegraphics[width=16px]{HTG}
+    & Haiti                        & Gourde haïtienne        & HTG & \Sexpr{atual("EUR/HTG")} & \Sexpr{atual("USD/HTG")}\\
+
+ \includegraphics[width=16px]{MXN}
+    & Mexiko                       & Peso Mexicano           & MXN & \Sexpr{atual("EUR/MXN")} & \Sexpr{atual("USD/MXN")}\\
+
+ \includegraphics[width=16px]{PEN}
+    & Peru                         & Nuevos Soles            & PEN & \Sexpr{atual("EUR/PEN")} & \Sexpr{atual("USD/PEN")}\\
+
+ \includegraphics[width=16px]{PYG}
+    & Paraguay                     & Guaraní                 & PYG & \Sexpr{atual("EUR/PYG")} & \Sexpr{atual("USD/PYG")}\\
+
+ \includegraphics[width=16px]{UYU}
+    & Uruguay                      & Peso Uruguayo           & UYU & \Sexpr{atual("EUR/UYU")} & \Sexpr{atual("USD/UYU")}\\
+
+ \includegraphics[width=16px]{VEF}
+    & Venezuela                    & Bolívar                 & VEF & \Sexpr{atual("EUR/VEF")} & \Sexpr{atual("USD/VEF")}\\
+
+ \includegraphics[width=16px]{XCD}
+    & Antigua und Barbuda          & East Caribbean Dollar   & XCD & \Sexpr{atual("EUR/XCD")} & \Sexpr{atual("USD/XCD")}\\
+
+ \hline
+ \end{tabular}
+
+  \begin{figure}[ht]
+      \centering
+        \includegraphics[width=0.9\textwidth]{../graficos/EUR.pdf}
+  \end{figure}
+
+  \begin{figure}[ht]
+      \centering
+        \includegraphics[width=0.9\textwidth]{../graficos/USD.pdf}
+  \end{figure}
+
+
+\end{document}
