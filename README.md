@@ -1,3 +1,3 @@
 # Waehrungen 
 Painel de monitoramento das moedas latinoamericanas frente ao Dólar e ao Euro
-Feito no R usando Sweave
+Feito no R usando Sweave. Primeiros passos em pesquisa reprodutível...
